@@ -10,9 +10,12 @@ Do not include secrets, personal data, or hidden model reasoning.
 
 <!-- Explain the problem, the outcome, and why this change matters. -->
 
-## Source and plan
+## Source
 
 - Source issue: <!-- Use `Closes #123`, `Refs #123`, or a full URL. If there is no issue, explain why. -->
+
+## Plan
+
 - Implementation plan: <!-- Link the plan or summarize the agreed approach. If no formal plan was needed, explain why. -->
 - Plan deviations: <!-- Write "None", or list each material deviation and its rationale. -->
 
