@@ -15,7 +15,7 @@
       "parameters": {
         "do_not_enforce_on_create": true,
         "required_status_checks": [
-          { "context": "validate" }
+          { "context": "Validate pull request body" }
         ],
         "strict_required_status_checks_policy": false
       }
