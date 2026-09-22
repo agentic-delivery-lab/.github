@@ -1,0 +1,15 @@
+name: Agentic Delivery quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  control-plane-contract:
+    uses: agentic-delivery-lab/agentic-delivery/.github/workflows/agentic-delivery-quality.yml@204cd775705ea77737daafb95954019e528752eb
+    with:
+      controller_commit: 7d38227f7f8d8377ed7cd1b883d90b71b69bfc9b
