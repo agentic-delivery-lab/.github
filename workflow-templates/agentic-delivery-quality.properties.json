@@ -1,0 +1,6 @@
+{
+  "name": "Agentic Delivery quality",
+  "description": "Add the SHA-pinned Agentic Delivery contract checks to a repository.",
+  "iconName": "octicon-check-circle",
+  "categories": ["Continuous integration", "Automation"]
+}
