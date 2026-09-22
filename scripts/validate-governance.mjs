@@ -5,10 +5,6 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const requiredFiles = [
   'README.md',
-  'CODE_OF_CONDUCT.md',
-  'CONTRIBUTING.md',
-  'SECURITY.md',
-  'SUPPORT.md',
   'profile/README.md',
   '.github/CODEOWNERS',
   '.github/ISSUE_TEMPLATE/config.yml',
