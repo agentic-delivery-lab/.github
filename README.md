@@ -16,3 +16,14 @@ Organization-wide default community health files for `agentic-delivery-lab`.
 GitHub uses these files for organization repositories that do not define a
 file of the same type. A repository-specific file takes precedence over the
 organization default.
+
+## Ordinary requests
+
+Use **New issue → Open a blank issue** to describe an ordinary request in your
+own words. Issue forms are optional; you do not need to set lifecycle fields
+to submit a request.
+
+Validation preserves `blank_issues_enabled: true`. The dependency-free check
+admits one plain setting and the existing plain `contact_links` entries;
+aliases, duplicate keys and multiple YAML documents fail closed. Run
+`node scripts/validate-governance.mjs` and `node --test tests/*.test.mjs`.

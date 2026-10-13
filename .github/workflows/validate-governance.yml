@@ -21,3 +21,5 @@ jobs:
           persist-credentials: false
       - name: Validate public surfaces
         run: node scripts/validate-governance.mjs
+      - name: Test ordinary Issue intake
+        run: node --test tests/*.test.mjs
