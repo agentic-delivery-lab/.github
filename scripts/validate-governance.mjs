@@ -1,3 +1,4 @@
+import { validateWorkflowStarter } from './validate-workflow-starter.mjs';
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -58,7 +59,7 @@ async function files(directory, prefix = '') {
   return result;
 }
 
-const errors = [];
+const errors = await validateWorkflowStarter(root);
 for (const relativePath of requiredFiles) {
   if (!(await exists(relativePath))) errors.push(`missing required public surface: ${relativePath}`);
 }

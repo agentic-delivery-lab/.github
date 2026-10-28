@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "repository": "agentic-delivery-lab/agentic-delivery",
+  "repositoryId": 1358455028,
+  "workflow": {
+    "commit": "4d7448c0d628bd591d16c57082204391f1faeffd",
+    "path": ".github/workflows/agentic-delivery-quality.yml",
+    "contentSha256": "7bbc47207703dd51b92f41dd8239599d4b965ccb263eb21de4ce57c14f456cbc"
+  },
+  "controller": {
+    "commit": "98495275481aff381180771da6eba9da95bc7816",
+    "version": "0.2.0-draft.67"
+  },
+  "projectionSha256": "f074c8c946d775cb5a891d0059463745d2c51cb2931a212ad490f6e6380d8c3c"
+}

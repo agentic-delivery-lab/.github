@@ -74,3 +74,21 @@ Validation preserves `blank_issues_enabled: true`. The dependency-free check
 admits one plain setting and plain `contact_links` entries; aliases, duplicate
 keys and multiple YAML documents fail closed. Run
 `node scripts/validate-governance.mjs` and `node --test tests/*.test.mjs`.
+
+## Versioned workflow starter
+
+The [quality starter](workflow-templates/agentic-delivery-quality.yml) calls one
+read-only Control Plane workflow. Its adjacent
+[source record](workflow-templates/agentic-delivery-quality.source.json) declares
+the native source repository ID, immutable workflow commit/path/content digest,
+compatible controller version/commit and exact starter digest. Workflow source
+`4d7448c0d628bd591d16c57082204391f1faeffd` is separate from controller release
+`0.2.0-draft.67` at `98495275481aff381180771da6eba9da95bc7816`.
+
+The dependency-free local validator checks the declared source shape, exact
+projection digest, separate job-field pins and closed read-only starter format.
+It does not query GitHub or attest upstream content, release readiness, live
+hosting controls or runtime admission. Review upstream content at the immutable
+source before updating the record. Draft source records do not authorize a
+consumer rollout. Distribution owns managed bootstrap; this repository supplies
+the optional GitHub workflow starter.
