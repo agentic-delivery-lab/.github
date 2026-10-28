@@ -1,3 +1,4 @@
+import { validateWorkflowStarter } from './validate-workflow-starter.mjs';
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -5,6 +6,10 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const requiredFiles = [
   'README.md',
+  'CODE_OF_CONDUCT.md',
+  'CONTRIBUTING.md',
+  'SECURITY.md',
+  'SUPPORT.md',
   'profile/README.md',
   '.github/CODEOWNERS',
   '.github/ISSUE_TEMPLATE/config.yml',
@@ -58,7 +63,7 @@ async function files(directory, prefix = '') {
   return result;
 }
 
-const errors = [];
+const errors = await validateWorkflowStarter(root);
 for (const relativePath of requiredFiles) {
   if (!(await exists(relativePath))) errors.push(`missing required public surface: ${relativePath}`);
 }
