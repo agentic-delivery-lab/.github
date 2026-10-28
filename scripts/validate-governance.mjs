@@ -62,6 +62,30 @@ const errors = [];
 for (const relativePath of requiredFiles) {
   if (!(await exists(relativePath))) errors.push(`missing required public surface: ${relativePath}`);
 }
+// Admit the current plain-key configuration syntax instead of interpreting
+// YAML aliases, duplicate keys or multiple documents as intake policy.
+const intakeConfig = await readFile(path.join(root, '.github/ISSUE_TEMPLATE/config.yml'), 'utf8').catch(() => '');
+let blankEntryCount = 0;
+let contactLinksCount = 0;
+let inContactLinks = false;
+let supportedIntakeConfig = true;
+for (const line of intakeConfig.split(/\r?\n/)) {
+  if (/^\s*(?:#.*)?$/.test(line)) continue;
+  if (/^blank_issues_enabled: +true *(?:#.*)?$/.test(line)) {
+    blankEntryCount += 1;
+    inContactLinks = false;
+  } else if (/^contact_links: *(?:#.*)?$/.test(line)) {
+    contactLinksCount += 1;
+    inContactLinks = true;
+  } else if (inContactLinks && /^(?:  - name|    url|    about): +[^&*!>|{}[\]\s].*$/.test(line)) {
+    // Existing contact-link strings cannot change a top-level intake option.
+  } else {
+    supportedIntakeConfig = false;
+  }
+}
+if (!supportedIntakeConfig || blankEntryCount !== 1 || contactLinksCount > 1) {
+  errors.push('blank Issues must remain enabled with one plain blank_issues_enabled: true entry and supported contact-link syntax');
+}
 const issueForms = (await files('.github/ISSUE_TEMPLATE')).filter((file) => file.endsWith('.yml'));
 for (const form of requiredForms) if (!issueForms.includes(form)) errors.push(`missing issue form: ${form}`);
 for (const relativePath of await files('.')) {

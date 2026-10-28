@@ -13,9 +13,13 @@ The organization publishes these defaults:
   safety, testing, documentation, and review guidance.
 - [`SECURITY.md`](SECURITY.md) — private vulnerability-reporting guidance.
 - [`SUPPORT.md`](SUPPORT.md) — documentation and issue-based support guidance.
-- [Pull-request template](.github/pull_request_template.md) — neutral prompts
-  for change summary, linked work, verification, documentation, security and
-  privacy, breaking changes, and reviewer notes.
+- [Pull-request template](.github/pull_request_template.md) — the accepted
+  organization contract for source issue, implementation plan, changes,
+  verification, evidence, delivery risk, review guidance and author checklist.
+- [Pull-request body workflow](.github/workflows/pull-request-body.yml) —
+  validates that contract using trusted base-branch code and read-only permissions.
+- [Repository ruleset definition](.github/rulesets/require-pull-request-body.json) —
+  desired hosting configuration applied separately; a file is not live enforcement.
 - [Issue forms and configuration](.github/ISSUE_TEMPLATE/) — the canonical
   issue forms and enabled blank-issue fallback.
 
@@ -59,3 +63,14 @@ inherit those files automatically.
 
 - [GitHub: Creating a default community health file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file)
 - [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
+
+## Ordinary requests and validation
+
+Use **New issue → Open a blank issue** to describe an ordinary request in your
+own words. Issue forms are optional; you do not need to set lifecycle fields
+to submit a request.
+
+Validation preserves `blank_issues_enabled: true`. The dependency-free check
+admits one plain setting and plain `contact_links` entries; aliases, duplicate
+keys and multiple YAML documents fail closed. Run
+`node scripts/validate-governance.mjs` and `node --test tests/*.test.mjs`.
