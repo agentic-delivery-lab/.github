@@ -9,7 +9,8 @@ body:
     attributes:
       value: |
         Use this form when a new, changed or removed architectural decision needs a traceable record.
-        A normal source issue may remain the assignment brief and serve as the ADR tracking issue. During triage, refining or implementation, an agent may create this form as a linked sub-issue when separate ADR tracking is useful.
+        The native originating Issue remains the assignment brief. Formal ADR work belongs to Architecture Authority, using a separately authorized tracking Issue linked to that origin. The origin may serve both roles only when it already belongs to Authority and tracks this decision.
+        An agent must not create or replace a tracking Issue without explicit authorization. If it is missing or inaccessible, pause for clarification.
 
         Do not include passwords, API keys, personal data or other secrets.
 
@@ -120,9 +121,9 @@ body:
     id: affected_adrs
     attributes:
       label: Affected ADR files
-      description: List existing ADR paths for a removal or update. For a new decision, write "None yet".
+      description: Link the exact Architecture Authority ADR source for a removal or update, including its repository and immutable commit. For a new decision, write "None yet".
       placeholder: |
-        docs/decisions/0001-example.md
+        https://github.com/agentic-delivery-lab/agentic-delivery-architecture/blob/0423533176ad6239fe5d828736605b5a6360293c/decisions/0001-use-madr-for-architecture-decisions.md
         or: None yet
     validations:
       required: true
@@ -134,5 +135,5 @@ body:
       options:
         - label: I have not included secrets or unnecessary personal data.
           required: true
-        - label: I understand that an ADR change is provisional on its feature branch and official only after an approved pull request is merged into `main`.
+        - label: I understand that formal ADR work belongs to Architecture Authority and becomes input for consumers through an approved Architecture Release.
           required: true
